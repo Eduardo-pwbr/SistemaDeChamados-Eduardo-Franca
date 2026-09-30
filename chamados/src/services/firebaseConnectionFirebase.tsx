@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";  
-import { getStorage } from "firebase/storage";
+import { getAuth } from "firebase/auth"; /* quero fazer altenticação */
+import { getFirestore } from "firebase/firestore"; /*conecta sua aplicação ao Firestore*/ 
+import { getStorage } from "firebase/storage"; /* getStorage() é uma função do Firebase Storage usada para obter uma instância do serviço de armazenamento de arquivos, como imagens, PDFs e vídeos.*/
 
 
 

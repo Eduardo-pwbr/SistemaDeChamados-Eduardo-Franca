@@ -1,28 +1,40 @@
 
-
+import React from "react";
 import "./singnUp.css";
 import logo from "../../assets/logo.png";
 import { useState } from "react";
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 export default function SignUp() {
 
-  const [nome, setNome] = useState("");
+
+
+  const [name, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    if (name !== "" && email !== "" && password !== "")
+    {
+      alert("Pode fazer o novo cadastro")
+    }
+    
+  }
   return (
     <div className="container-center">
       <div className="login">
         <div className="login-area">
           <img src={logo} alt="Logo do sistema" />
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <h1>Nova Conta</h1>
           <input
             type="text"
             placeholder="Nome"
-            value={nome}
+            value={name}
             onChange={(e) => setNome(e.target.value)}
           />
 

@@ -1,12 +1,26 @@
+
+import type { SyntheticEvent } from "react";
 import "./singnIn.css";
 import logo from "../../assets/logo.png";
-
-import { useState } from "react";
-
+import { useState, useContext} from "react";
 import { Link } from "react-router-dom";
+
+
+
+import { AuthContext } from "../../contexts/auth";
+
 export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  //const { signIn } = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext)!;
+
+  function handleSigin(e: SyntheticEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    if (email !== "" && password !== "") signIn(email, password);
+  }
 
   return (
     <div className="container-center">
@@ -14,7 +28,7 @@ export default function Signin() {
         <div className="login-area">
           <img src={logo} alt="Logo do sistema" />
         </div>
-        <form>
+        <form onSubmit={handleSigin}>
           <h1>Entrar</h1>
           <input
             type="email"
@@ -30,9 +44,7 @@ export default function Signin() {
           />
           <button type="submit">Acessar</button>
         </form>
-        <Link  to="/register">
-          Criar uma conta
-        </Link>
+        <Link to="/register">Criar uma conta</Link>
       </div>
     </div>
   );
