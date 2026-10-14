@@ -28,7 +28,7 @@ export default function SignIn() {
     const [password, setPassword] = useState("");
 
     //const { signIn } = useContext(AuthContext);
-    const { signIn } = useContext(AuthContext)!;
+    const { signIn,loadingAuth } = useContext(AuthContext)!;
 
   async function handleSigin(e: SyntheticEvent<HTMLFormElement>) {
       e.preventDefault();
@@ -98,7 +98,8 @@ export default function SignIn() {
           </div>
 
           <button className="btn" type="submit">
-            Entrar
+            {loadingAuth ? "Carregando..." : "Acessar"}
+
           </button>
 
           <p className="alt">
