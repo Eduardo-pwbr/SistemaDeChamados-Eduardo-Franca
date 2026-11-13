@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/auth";
+import Header from "../../components/Header";
 import "./dastboard.css";
 
 export default function Dashboard() {
@@ -11,7 +12,9 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+   
+      <Header />
+
       <button onClick={handleLogout}>Sair</button>
     </div>
   );

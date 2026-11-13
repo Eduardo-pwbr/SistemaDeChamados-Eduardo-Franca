@@ -7,7 +7,9 @@ export interface AuthContextType {
   user: UserData | null;
   signIn: (email: string, password: string) => void;
   signUp: (name: string, email: string, password: string) => void;
-  logout: () =>Promise<void>;
+  logout: () => Promise<void>;
+  
+  
 
 }
 
@@ -16,4 +18,6 @@ export interface UserData {
   nome: string;
   email: string | null;
   avatarUrl: string | null;
+  
+
 }
