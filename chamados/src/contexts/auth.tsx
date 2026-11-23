@@ -115,7 +115,7 @@ function AuthProvider({ children }: unico) {
   }
 
   /*Função de logout do usuário */
-  async function logout() {
+  async function Logout() {
     await signOut(auth);
     localStorage.removeItem("@ticketsPro");
     setUser(null);
@@ -130,7 +130,10 @@ function AuthProvider({ children }: unico) {
         signUp,
         loadingAuth,
         loading,
-        logout,
+        Logout,
+        storageUser,
+        setUser,
+    
       }}
     >
       {children}
