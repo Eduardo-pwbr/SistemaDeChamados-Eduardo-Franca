@@ -7,6 +7,8 @@ import { FiSettings, FiUpload } from "react-icons/fi";
 import avatar from "../../assets/avatar.png";
 import { AuthContext } from "../../contexts/auth";
 
+import { db,storage} from "../../services/firebaseConnectionFirebase";
+import {doc, updateDoc} from "firebase/firestore";
 
 
 export default function Profile() {
@@ -42,11 +44,27 @@ export default function Profile() {
       }
     }
   }
-  function handleSubmit(e: any) {
+
+ async function handleSubmit(e: any) {
     e.preventDefault();
-    console.log("Nome: ", nome);
-    console.log("Email: ", email);
-    console.log("Imagem: ", imageAvatar);
+    if (imageAvatar === null && nome !== "") {
+      const docref = doc(db, "users", user.uid);
+     await  updateDoc(docref, {
+        nome: nome,
+     })
+       .then(() => {
+         let data = {
+           ...user,
+           nome: nome,
+         };
+         setUser(data);
+         storageUser(data);
+         alert("Nome alterado com sucesso!");
+       })
+       .catch((error) => {
+         console.log("Erro ao atualizar o nome: ", error);
+       });
+    }
   }
 
   return (
@@ -86,14 +104,15 @@ export default function Profile() {
               type="text"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
-              disabled={true}
+         
+    
             />
             <label>Email</label>
             <input
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              disabled={true}
+            
             />
             <button type="submit">Salvar</button>
           </form>

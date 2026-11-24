@@ -3,12 +3,15 @@ export interface AuthContextType {
   loadingAuth: boolean;
   loading: boolean;
   //user: null;
-  user: UserData | null;
+  //user: UserData ;
   signIn: (email: string, password: string) => void;
   signUp: (name: string, email: string, password: string) => void;
   storageUser: (data: UserData) => void;
   setUser: (user: UserData | null) => void;
   Logout: () => Promise<void>;
+  
+
+
 
 }
 
